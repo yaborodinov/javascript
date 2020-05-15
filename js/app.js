@@ -1,2 +1,2 @@
 let name = prompt("введите свое имя");
-alert(`hello ${name}`); // алёрт
+alert(`hello ${name}`); // 1 способ
