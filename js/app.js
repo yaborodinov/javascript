@@ -1,3 +1,4 @@
+"use strict"
 let name = prompt("Введите свое имя");
 alert(`Добрый день, ${name}!`); 
 
