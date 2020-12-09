@@ -3,7 +3,7 @@
 
 let user = {
     name: "ivan",
-    age: 34,
+    age: 32,
     family: {
         dad: {
             name: "Nickolay",
