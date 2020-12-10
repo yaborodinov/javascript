@@ -1,22 +1,30 @@
 "use strict"
 
 
-let user = {
-    name: "ivan",
-    age: 32,
-    family: {
-        dad: {
-            name: "Nickolay",
-            age: 50,
-        },
-        mam: "Elena"
-    }
+let obj = {};
+
+let num = +prompt("какое килличество категорий трат у вас за последний месяц,", "");
+for (let i = 1; i <= num; i++){
+    let y = prompt ("название траты","")
+    obj[y]=+prompt("введите сумму траты","")
+
 }
 
-let clone = _.cloneDeep(user);
+function calcSum(a) {
+    let b = 0;
+    for (let key in a) {
+       b = b+ a[key]
+    }
+    return  b;
+}
 
-user["family"]["dad"]["age"]++
+
+let resultObj = calcSum(obj);
+
+console.log(resultObj)
+console.log(obj)
 
 
-console.log(clone)
-console.log(user)
+
+
+
