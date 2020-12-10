@@ -1,30 +1,33 @@
 "use strict"
 
-
-let obj = {};
-
-let num = +prompt("какое килличество категорий трат у вас за последний месяц,", "");
-for (let i = 1; i <= num; i++){
-    let y = prompt ("название траты","")
-    obj[y]=+prompt("введите сумму траты","")
-
-}
-
-function calcSum(a) {
-    let b = 0;
-    for (let key in a) {
-       b = b+ a[key]
+let obj = {
+    name: "Ivan",
+    secondName: "Ivanov",
+    hi: function () {
+        console.log(`hi ${this.name}`)
+    },
+    skills: {
+        css: 3,
+        js: 5,
+        html:3,
     }
-    return  b;
+}
+obj.hi()
+
+
+let obj2 = {
+    name:"Kirill",
 }
 
+obj2.hi = obj.hi;
+obj2.hi()
 
-let resultObj = calcSum(obj);
-
-console.log(resultObj)
-console.log(obj)
-
-
-
+// Вывести ключ\значение объекта
+for (let k in obj) {
+    console.log(k +" : "+ obj[k])
+}
+for (let k in obj.skills) {
+    console.log(k+" : "+ obj.skills[k])
+}
 
 
