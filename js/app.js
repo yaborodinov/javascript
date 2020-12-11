@@ -1,33 +1,22 @@
 "use strict"
 
-let obj = {
-    name: "Ivan",
-    secondName: "Ivanov",
-    hi: function () {
-        console.log(`hi ${this.name}`)
-    },
-    skills: {
-        css: 3,
-        js: 5,
-        html:3,
+
+
+
+
+function howMany(selectObj) {
+    let numberSelected = 0;
+    for (let i = 0; i < selectObj.options.length; i++){
+        if (selectObj.options[i].selected) {
+            numberSelected++;
+        }
+        
     }
-}
-obj.hi()
-
-
-let obj2 = {
-    name:"Kirill",
+    return numberSelected;
 }
 
-obj2.hi = obj.hi;
-obj2.hi()
-
-// Вывести ключ\значение объекта
-for (let k in obj) {
-    console.log(k +" : "+ obj[k])
-}
-for (let k in obj.skills) {
-    console.log(k+" : "+ obj.skills[k])
-}
-
+let btn = document.getElementById("btn");
+btn.addEventListener("click", function () {
+    console.log("выбрано элементов : " + howMany(document.selectForm.musicTypes))
+})
 
