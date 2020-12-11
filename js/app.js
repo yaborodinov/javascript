@@ -1,19 +1,28 @@
 "use strict"
+let obj = {};
 
+let num = +prompt("какое килличество категорий трат у вас за последний месяц,", "");
+for (let i = 1; i <= num; i++) {
+    let y;
+    do {
+         y = prompt("название траты", "")
+    } while (y==undefined || y==null||y=="")
+    do {
+        obj[y] = +prompt("введите сумму траты", "")
+    } while (obj[y] == undefined || obj[y] == null || obj[y]=="")
+    
 
-function rangeNumbers(a, b) {
-    if (a < b) {
-        for (let i = a; i < b; i++){
-        if (i % 2 != 0) {
-            console.log(i)
-            }
-            
-        }
-        
-    } else {
-        console.log("число b должно быть больше")
-    }
-    
-    
 }
-rangeNumbers(223, 1175)
+
+function calcSum(a) {
+    let b = 0;
+    for (let key in a) {
+        b = b + a[key]
+    }
+    return b;
+}
+
+let resultObj = calcSum(obj);
+
+console.log(resultObj)
+console.log(obj)
