@@ -1,22 +1,19 @@
 "use strict"
 
 
-
-
-
-function howMany(selectObj) {
-    let numberSelected = 0;
-    for (let i = 0; i < selectObj.options.length; i++){
-        if (selectObj.options[i].selected) {
-            numberSelected++;
+function rangeNumbers(a, b) {
+    if (a < b) {
+        for (let i = a; i < b; i++){
+        if (i % 2 != 0) {
+            console.log(i)
+            }
+            
         }
         
+    } else {
+        console.log("число b должно быть больше")
     }
-    return numberSelected;
+    
+    
 }
-
-let btn = document.getElementById("btn");
-btn.addEventListener("click", function () {
-    console.log("выбрано элементов : " + howMany(document.selectForm.musicTypes))
-})
-
+rangeNumbers(223, 1175)
