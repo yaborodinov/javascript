@@ -1,26 +1,34 @@
 "use strict"
 
-
-let obj = {
-    name: "Ivan",
-    lastName: "Ivanov",
-    skills: {
-        js: 5,
-        css: 3,
-        html: 5,
-        
-    }
-}
-
-
-
-for (let a in obj) {
-    if (typeof (obj[a]) ===  'object') {
-        for (let b in obj[a]) {
-            console.log(b+ " : "+obj[a][b])
-        }
-    } else {
-        console.log(a + " : "+ obj[a])
-    }
+let arr = [
+    "kyiv",
+    "Lviv",
+    "Oslo",
+    "Madrid"
+],
+    arrOfNumbers = [
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    ];
     
+
+let maxNumber = arrOfNumbers[0];
+let minNumber = maxNumber;
+for (let i = 0; i < arrOfNumbers.length; i++){
+    if (arrOfNumbers[i] > maxNumber) {
+        maxNumber=arrOfNumbers[i]
+    }
+    if (arrOfNumbers[i] < minNumber) {
+        minNumber = arrOfNumbers
+    }
 }
+
+console.log(minNumber)
+console.log(maxNumber)
+
+
+
+
+
+
+
+
