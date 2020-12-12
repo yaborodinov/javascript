@@ -1,28 +1,26 @@
 "use strict"
-let obj = {};
 
-let num = +prompt("какое килличество категорий трат у вас за последний месяц,", "");
-for (let i = 1; i <= num; i++) {
-    let y;
-    do {
-         y = prompt("название траты", "")
-    } while (y==undefined || y==null||y=="")
-    do {
-        obj[y] = +prompt("введите сумму траты", "")
-    } while (obj[y] == undefined || obj[y] == null || obj[y]=="")
-    
 
-}
-
-function calcSum(a) {
-    let b = 0;
-    for (let key in a) {
-        b = b + a[key]
+let obj = {
+    name: "Ivan",
+    lastName: "Ivanov",
+    skills: {
+        js: 5,
+        css: 3,
+        html: 5,
+        
     }
-    return b;
 }
 
-let resultObj = calcSum(obj);
 
-console.log(resultObj)
-console.log(obj)
+
+for (let a in obj) {
+    if (typeof (obj[a]) ===  'object') {
+        for (let b in obj[a]) {
+            console.log(b+ " : "+obj[a][b])
+        }
+    } else {
+        console.log(a + " : "+ obj[a])
+    }
+    
+}
