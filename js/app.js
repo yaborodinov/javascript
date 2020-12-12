@@ -7,23 +7,19 @@ let arr = [
     "Madrid"
 ],
     arrOfNumbers = [
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        1, 4653, -3, 4, 5,34, 6, 7, 8, 9, 10,
     ];
     
 
-let maxNumber = arrOfNumbers[0];
-let minNumber = maxNumber;
-for (let i = 0; i < arrOfNumbers.length; i++){
-    if (arrOfNumbers[i] > maxNumber) {
-        maxNumber=arrOfNumbers[i]
-    }
-    if (arrOfNumbers[i] < minNumber) {
-        minNumber = arrOfNumbers
-    }
+let min = arrOfNumbers[0];
+let max = min;
+for (let i = 1; i < arrOfNumbers.length; ++i) {
+    if (arrOfNumbers[i] > max) max = arrOfNumbers[i];
+    if (arrOfNumbers[i] < min) min = arrOfNumbers[i];
 }
 
-console.log(minNumber)
-console.log(maxNumber)
+console.log(min)
+console.log(max)
 
 
 
