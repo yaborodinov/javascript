@@ -2,22 +2,16 @@
 
 
 
-function is(num) {
-    let message;
-    if (num % 2 == 0) {
-        message =`число ${num} парное`
-    } else {
-        message = `число ${num} не парное`
+let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+
+function aclean(arr) {
+    let map = new Map();
+
+    for (let word of arr) {
+        let sorted =  word.toLowerCase().split("").sort().join("")
+        map.set(sorted, word);
     }
-    return message
+
+return Array.from(map.values())
 }
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    let a;
-    return a=Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
-}
-
-console.log(is(getRandomInt(1,10)))
-
-
+console.log(aclean(arr))
