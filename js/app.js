@@ -1,17 +1,26 @@
 "use strict"
 
 
-
-let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
-
-function aclean(arr) {
-    let map = new Map();
-
-    for (let word of arr) {
-        let sorted =  word.toLowerCase().split("").sort().join("")
-        map.set(sorted, word);
-    }
-
-return Array.from(map.values())
+let salaries = {
+    "john": 100,
+    "pete": 300,
+    "mary":250,
 }
-console.log(aclean(arr))
+
+
+function topSalary(salaries) {
+    let max = 0;
+    let maxName = null;
+    let arr = Object.entries(salaries)
+
+    for (let [name, salary] of arr) {
+        if (max < salary) {
+            max = salary
+            maxName = name;
+        }
+    }
+    return maxName
+}
+
+
+console.log(topSalary(salaries))
