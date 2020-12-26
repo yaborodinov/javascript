@@ -1,26 +1,37 @@
 "use strict"
 
 
-let salaries = {
-    "john": 100,
-    "pete": 300,
-    "mary":250,
-}
 
 
-function topSalary(salaries) {
-    let max = 0;
-    let maxName = null;
-    let arr = Object.entries(salaries)
+// let input = document.querySelector(".input");
+// let inputValue = input.getAttribute("value")
+// let button = document.querySelector("button");
 
-    for (let [name, salary] of arr) {
-        if (max < salary) {
-            max = salary
-            maxName = name;
-        }
+    
+// button.addEventListener("click", function () {
+//     input.setAttribute("value", Number(input.getAttribute("value"))+1 )
+// })
+
+// // picture toggle
+// let a = document.querySelector(".picture1");
+// a.addEventListener("click",  ()=>a.classList.toggle("picture2"))
+
+
+
+
+let a = document.querySelector("img");
+
+
+function changeImg() {
+    let imgSrc = a.getAttribute("src");
+    if (imgSrc === "images/skype.png") {
+        a.setAttribute("src", "images/telegram.png")
+    } else {
+        a.setAttribute("src","images/skype.png")
     }
-    return maxName
 }
 
 
-console.log(topSalary(salaries))
+
+
+a.addEventListener("click", changeImg)
