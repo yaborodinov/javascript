@@ -1,20 +1,29 @@
 "use strict"
 
 
-let fieldHeight = field.clientHeight;
-let fieldWidth = field.clientWidth;
+let downBtn = document.querySelector("#down");
+let downBtn2 = document.querySelector("#down2");
+let textH2 = document.querySelector("h2");
+let textSecond = document.querySelector(".second")
+console.log(textSecond)
+
+function scrollDown(el) {
+    el.scrollIntoView({block:"start", behavior:"smooth"})
+}
 
 
-let ballWidth = ball.clientWidth;
-let ballHeight = ball.clientHeight;
-
-ball.style.cssText = `left:${fieldWidth / 2 - ballWidth/2}px; top:${fieldHeight / 2 - ballHeight/2}px`
-
-console.log(fieldHeight)
 
 
 
+downBtn.addEventListener("click", () => {
+    scrollDown(textH2)
+} )
 
+
+
+downBtn2.addEventListener("click", () => {
+    scrollDown(textSecond)
+})
 
 
 
