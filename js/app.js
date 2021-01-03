@@ -28,29 +28,56 @@ coordinat.addEventListener("click", () => {
 
 // применение для fixed позиционирования
 
-let c = document.querySelector("#header-message");
+let c = document.querySelector("#coordinat");
 
-function createMessageUnder(elem,html) {
-    let message = document.createElement("div");
-    message.style.cssText = "position:fixed; color:red; z-index:10";
-    let coords = elem.getBoundingClientRect();
+// function createMessageUnder(elem,html) {
+//     let message = document.createElement("div");
+//     message.style.cssText = "position:fixed; color:red; z-index:10";
+//     let coords = elem.getBoundingClientRect();
 
-    message.style.left = coords.left + "px";
-    message.style.top = coords.bottom + "px";
+//     message.style.left = coords.left + "px";
+//     message.style.top = coords.bottom + "px";
 
-    message.innerHTML = html;
-    return message
+//     message.innerHTML = html;
+//     return message
+// }
+
+
+// let message = createMessageUnder(c, "hello, world")
+
+
+// c.addEventListener("click", () => {
+//     document.querySelector(".header").append(message)
+// })
+
+
+// setTimeout(() => message.remove(), 5000);
+
+// координаты относительно документа
+
+function getCoords(elem) {
+    let box = elem.getBoundingClientRect();
+
+    return {
+        top: box.top + pageYOffset,
+        left:box.left+pageXOffset
+    }
 }
 
 
-let message = createMessageUnder(c, "hello, world")
+function createMessageUnder(elem, html) {
+    let message = document.createElement("div");
+    message.style.cssText = "position:absolute; color:red";
 
+    let coords = getCoords(elem);
+    message.style.left = coords.left + "px";
+    message.style.top = coords.bottom + "px";
+    message.textContent = html;
+    return message;
+}
+let message = createMessageUnder(c, "hello, boy");
 
 c.addEventListener("click", () => {
     document.querySelector(".header").append(message)
 })
-
-
-
-setTimeout(() => message.remove(), 5000);
 
