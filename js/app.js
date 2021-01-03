@@ -34,27 +34,41 @@ like.forEach((el) => {
 let moreDetailsButtons = document.querySelectorAll(".more_details");
 let closeButton = document.querySelector(".btn-close");
 let modal = document.querySelector(".main_modal");
-console.log(closeButton)
 
 moreDetailsButtons.forEach((el) =>{
-    el.addEventListener("click", () => {
-        modal.classList.remove("hide")
-        modal.classList.add("show")
-
-    })
+    el.addEventListener("click", openModal)
 })
 
+
+function openModal() {
+    modal.classList.remove("hide")
+    modal.classList.add("show")
+}
 function closeModal() {
-    modal.classList.toggle("show")
+    modal.classList.add("hide")
+    modal.classList.remove("show")
 }
 
 closeButton.addEventListener("click", closeModal)
 
-
+ 
 modal.addEventListener("click", (e) => {
     if (e.target === modal) {
         closeModal()
     }
 })
 
+
+// show modal by scroll
+console.log(window.pageYOffset)
+console.log(document.documentElement.scrollHeight)
+
+function openModalByScroll() {
+    if (window.pageYOffset >= document.documentElement.scrollHeight / 2) {
+        openModal()
+        window.removeEventListener("scroll", openModalByScroll )
+    }
+}
+
+window.addEventListener("scroll", openModalByScroll)
 
