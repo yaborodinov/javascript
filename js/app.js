@@ -66,9 +66,19 @@ console.log(document.documentElement.scrollHeight)
 function openModalByScroll() {
     if (window.pageYOffset >= document.documentElement.scrollHeight / 2) {
         openModal()
-        window.removeEventListener("scroll", openModalByScroll )
+        // window.removeEventListener("scroll", openModalByScroll )
     }
 }
 
-window.addEventListener("scroll", openModalByScroll)
+window.addEventListener("scroll",  openModalByScroll, {once:true})
 
+// slider
+
+$(document).ready(function () {
+    $('.slider-block').slick({
+        dots: true,
+        // autoplay: true,
+        // autoplaySpeed:1000,
+        
+    });
+});

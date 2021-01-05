@@ -676,3 +676,14 @@ footer{
 .show{
     display: block;
 }
+
+
+/* slider */
+
+.slider-item{
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    
+}
