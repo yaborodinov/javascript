@@ -81,3 +81,55 @@ c.addEventListener("click", () => {
     document.querySelector(".header").append(message)
 })
 
+
+// объект события
+
+let btnEvent = document.querySelector("#btn-event");
+
+btnEvent.addEventListener("click", (event) => {
+    console.log(event.type + " на " + event.currentTarget)
+    console.log("координаты " + event.clientX + " : " + event.clientY)
+})
+
+let textRemove = document.querySelector(".side-bar");
+let btnRemoveText = document.querySelector(".btn-text-remove");
+function textDel(text) {
+    text.style.display = "none";
+}
+
+btnRemoveText.addEventListener("click", () => {
+    textDel(textRemove)
+})
+
+let buttonDelItself = document.querySelectorAll(".btn-text-remove")[1];
+
+buttonDelItself.addEventListener("click", () => {
+    textDel(buttonDelItself)
+})
+
+
+// football field
+
+let ball = document.querySelector("#ball");
+let field = document.querySelector("#field");
+
+field.style.position="relative"
+ball.style.position = "absolute"
+
+
+
+getCoords(ball)
+
+field.addEventListener("click", (e) => {
+    let fieldCoords = field.getBoundingClientRect()
+
+    let ballCoords = {
+        top: e.clientY - fieldCoords.top - field.clientTop - ball.clientHeight / 2,
+        left:e.clientX - fieldCoords.left - field.clientLeft - ball.clientWidth/2,
+    }
+
+    ball.style.left = ballCoords.left + "px"
+    ball.style.top = ballCoords.top+"px"
+
+})
+
