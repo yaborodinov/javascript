@@ -1,98 +1,23 @@
 
-.container{
+#container{
     width: 65%;
     text-align: center;
 }
-.alert{
-    padding: 15px;
-    border: 1px solid #d6e9c6;
-    border-radius: 4px;
-    color: #3c763d;
-    background-color: #dff0d8;
-}
 
-#example{
-    margin-left: 102px;
-    margin-top: 102px;
-    font-size: 22px;
-    width: 300px;
-    height: 200px;
-    border: 25px solid #e8c48f;
-    padding: 20px;
-    overflow: auto;
-}
 
-    /* header */
-    .header{
-        position: fixed;
-        z-index: 19;
-        display: flex;
-        flex-direction: column;
 
-    }
-  
-    p span{
-        font-weight: 700;
-        color: red;
-    }
-    h2 span{
-        color:blue;
-    }
-    h2, p{
-        margin-top: 13px;
-    }
-    a{
-        background-color: #d6e9c6;
-        padding: 5px;
-        color: #000000;
-        font-weight: 400;
-    }
-
-    a, button{
-        font-size: 22px;
-    }
-    .btn-text-remove{
-        font-size: 18px;
-    }
+.block{
+  border: 1px solid #333;
+  padding: 5px;
+  margin: 10px;
    
-
-    main{
-        display: flex;
-        justify-content: center;
-    }
-
-
-    /* modal */
-.modal{
-    text-align: center;
-    background-color: rgba(205, 224, 190, 0.527);
-    padding: 5px;
-    font-size: 23px;
-    display: none;
 }
-.show-modal{
-    display: block;
-}
+.block div button{
+ float: right;
 
-/* side-bar */
-.side-bar{
-    display: flex;
-    justify-content: flex-end;
-    color: rgb(48, 3, 100);
-    font-size: 23px;
-    font-weight: 700;
-    
 }
-
-/* football field */
-/* .field-block{
-    display: flex;
-    justify-content: flex-end;
-} */
-#field {
-      width: 200px;
-      height: 150px;
-      border: 10px solid black;
-      background-color: #00FF00;
-      overflow: hidden;
-    }
+.block div::after{
+  display: block;
+  content: "";
+  clear: both;
+}
