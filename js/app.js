@@ -2,28 +2,37 @@
 
 
 
+let grid = document.querySelector("#grid");
 
-let li = document.querySelectorAll("li");
-console.log(li)
-for (let i = 0; i < li.length; i++){
-    let span = document.createElement("span");
-    li[i].prepend(span)
-    span.append(span.nextSibling)
+grid.addEventListener("click", (e) => {
+    if (e.target.tagName != "TH") return;
+
+    let th = e.target;
+
+    sortGrid(th.cellIndex, th.dataset.type)
+})
+
+function sortGrid(colNum, type) {
+    let tbody = grid.querySelector("tbody");
+    console.log(tbody)
+    let rowsArray = Array.from(tbody.rows)
+
+    let compare;
+
+
+    switch (type) {
+        case "number":
+            compare = function (rowA, rowB) {
+                return rowA.cells[colNum].innerHTML - rowB.cells[colNum].innerHTML
+            }
+            break
+        case "string":
+            compare = function (rowA, rowB) {
+                return rowA.cells[colNum].innerHTML > rowB.cells[colNum].innerHTML?1:-1
+            }
+    }
+    rowsArray.sort(compare);
+
+    tbody.append(...rowsArray)
 
 }
-
-
-let tree = document.querySelector("#tree");
-console.log(tree)
-
-tree.addEventListener("click", (e) => {
-    if (e.target.tagName != 'SPAN') {
-        return;
-    }
-    let childrenContainer = e.target.parentNode.querySelector("ul")
-    if (!childrenContainer) return;
-    childrenContainer.hidden = !childrenContainer.hidden
-    // if(e.target.tagName == "SPAN"){
-        
-    // }
-})
