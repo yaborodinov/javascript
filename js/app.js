@@ -2,37 +2,43 @@
 
 
 
-let grid = document.querySelector("#grid");
+let tooltipElem;
 
-grid.addEventListener("click", (e) => {
-    if (e.target.tagName != "TH") return;
+document.addEventListener("mouseover", (e) => {
+    let target = e.target;
 
-    let th = e.target;
 
-    sortGrid(th.cellIndex, th.dataset.type)
+    let tooltipHtml = target.dataset.tooltip;
+
+    if (!tooltipHtml) return;
+
+    tooltipElem = document.createElement("div");
+    tooltipElem.className = "tooltip";
+    tooltipElem.innerHTML = tooltipHtml;
+    document.body.append(tooltipElem)
+
+    let coords = target.getBoundingClientRect();
+
+    let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
+
+    if (left < 0) left = 0;
+    
+    let top = coords.top - tooltipElem.offsetHeight - 5;
+    if (top < 0) {
+        top = coords.top + target.offsetHeight + 5;
+    }
+
+    tooltipElem.style.left = left + "px"
+    tooltipElem.style.top  = top+ "px"
+
+
 })
 
-function sortGrid(colNum, type) {
-    let tbody = grid.querySelector("tbody");
-    console.log(tbody)
-    let rowsArray = Array.from(tbody.rows)
 
-    let compare;
-
-
-    switch (type) {
-        case "number":
-            compare = function (rowA, rowB) {
-                return rowA.cells[colNum].innerHTML - rowB.cells[colNum].innerHTML
-            }
-            break
-        case "string":
-            compare = function (rowA, rowB) {
-                return rowA.cells[colNum].innerHTML > rowB.cells[colNum].innerHTML?1:-1
-            }
+document.addEventListener("mouseout", (e) => {
+    if (tooltipElem) {
+        tooltipElem.remove()
+        tooltipElem = null;
     }
-    rowsArray.sort(compare);
+})
 
-    tbody.append(...rowsArray)
-
-}
