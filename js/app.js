@@ -3,10 +3,27 @@
 
 
 
-let container = document.querySelector("#container")
+let li = document.querySelectorAll("li");
+console.log(li)
+for (let i = 0; i < li.length; i++){
+    let span = document.createElement("span");
+    li[i].prepend(span)
+    span.append(span.nextSibling)
 
-container.addEventListener("click", (e) => {
-    if (e.target.className == "remove-btn") {
-        e.target.closest(".block").style.display = "none"
+}
+
+
+let tree = document.querySelector("#tree");
+console.log(tree)
+
+tree.addEventListener("click", (e) => {
+    if (e.target.tagName != 'SPAN') {
+        return;
     }
+    let childrenContainer = e.target.parentNode.querySelector("ul")
+    if (!childrenContainer) return;
+    childrenContainer.hidden = !childrenContainer.hidden
+    // if(e.target.tagName == "SPAN"){
+        
+    // }
 })
