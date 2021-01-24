@@ -9,7 +9,27 @@ body {
       /* добавим body прокрутку, подсказка должна работать и с прокруткой */
     }
 
-    #contents{
-      padding: 5px;
-      border: 1px solid green;
-    }
+
+
+h1{
+  font-size: 45px;
+  margin-left:  50px;
+}
+
+.active{
+  background-color: green;
+
+}
+input{
+  padding: 10px;
+
+}
+li{
+  cursor: pointer;
+  padding: 5px;
+  margin-left: 50px;
+  margin-bottom: 10px;
+  border:1px solid #000;
+  display: block;
+  width: 100px;
+}
