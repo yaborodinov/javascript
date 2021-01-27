@@ -6,14 +6,19 @@
 
 let requestURL = "https://jsonplaceholder.typicode.com/users";
 
-function sendRequest(method, url) {
+function sendRequest(method, url, body = null) {
     return new Promise((resolve, reject) => {
         
 
     const xhr = new XMLHttpRequest();
-    xhr.responseType = "json";
+        xhr.responseType = "json";
+        
+
 
         xhr.open(method, url);
+        xhr.setRequestHeader("Content-Type", "application/json")
+
+        
     xhr.addEventListener("load", () => {
         if (xhr.status >= 400) {
             resolve(xhr.response)
@@ -25,11 +30,21 @@ function sendRequest(method, url) {
             reject(xhr.response)
         }
 
-    xhr.send(); 
+    xhr.send(JSON.stringify(body)); 
     })
    
 }
 
-sendRequest("GET", requestURL)
+// sendRequest("GET", requestURL)
+//     .then(data => console.log(data))
+//     .catch(error=>console.log(error))
+
+let body = {
+    name: "Andrey",
+    age: 33,
+}
+
+
+sendRequest("POST", requestURL, body)
     .then(data => console.log(data))
     .catch(error=>console.log(error))
