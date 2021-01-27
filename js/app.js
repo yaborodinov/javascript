@@ -1,16 +1,35 @@
 "use strict"
 
 
-let form = document.createElement("form");
-form.action = "https://google.com/search";
-form.method = "GET"
-
-form.innerHTML = `<input name="q" value="test">`;
-document.body.append(form)
 
 
-let btn = document.querySelector("button")
 
-btn.addEventListener("click", () => {
-    form.submit()
-})
+let requestURL = "https://jsonplaceholder.typicode.com/users";
+
+function sendRequest(method, url) {
+    return new Promise((resolve, reject) => {
+        
+
+    const xhr = new XMLHttpRequest();
+    xhr.responseType = "json";
+
+        xhr.open(method, url);
+    xhr.addEventListener("load", () => {
+        if (xhr.status >= 400) {
+            resolve(xhr.response)
+        } else {
+            reject(xhr.response)
+        }
+    })
+        xhr.onerror = () => {
+            reject(xhr.response)
+        }
+
+    xhr.send(); 
+    })
+   
+}
+
+sendRequest("GET", requestURL)
+    .then(data => console.log(data))
+    .catch(error=>console.log(error))
