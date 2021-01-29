@@ -32,10 +32,7 @@ const p = new Promise((resolve, reject) => {
         resolve(backendData)
 
     },2000)
-})
-
-
-p.then((data)=> {
+}).then((data)=> {
  return new Promise((resolve, reject) => {
         setTimeout(() => {
             data.modifaied = true;
@@ -44,10 +41,16 @@ p.then((data)=> {
     })   
     
     
-}).then((clientData) => {
+})
+    
+    .then((clientData) => {
+    
     console.log("data received", clientData)
     clientData.momsName = "Vasilisa";
     return clientData
 }).then((someData) => {
     console.log("modified", someData)
+}).catch(err => console.error("errorrr: ", err))
+    .finally(() => {
+    console.log("finally!!!")
 })
