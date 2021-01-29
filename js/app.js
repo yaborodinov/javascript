@@ -3,34 +3,51 @@
 
 
 
+console.log("request Data ...")
 
-let requestURL = "https://jsonplaceholder.typicode.com/users";
+// setTimeout(() => {
+//     console.log("preparing Data...");
+//     const backendData = {
+//         server: "aws",
+//         port: 2000,
+//         status:"working",
+//     }
 
-function sendRequest(method, url, body = null) {
+//     setTimeout(() => {
+//         backendData.modifaied = true;
+//         console.log("Data resived", backendData)
+//     },2000)    
+// }, 2000)
+
+
+
+const p = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log("preparing Data....");
+        const backendData = {
+        server: "aws",
+        port: 2000,
+        status:"working",
+        }
+        resolve(backendData)
+
+    },2000)
+})
+
+
+p.then((data)=> {
+ return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            data.modifaied = true;
+            resolve(data)
+        },2000)
+    })   
     
-    const headers = {
-        "Content-Type":"application/json"
-    }
-    return fetch(url, {
-        method: method,
-        body: JSON.stringify(body),
-        headers: headers,
-    }).then(response => {
-       return response.json()
-   })
-   
-}
-
-// sendRequest("GET", requestURL)
-//     .then(data => console.log(data))
-//     .catch(error=>console.log(error))
-
-let body = {
-    name: "Andrey",
-    age: 33,
-}
-
-
-sendRequest("POST", requestURL, body)
-    .then(data => console.log(data))
-    .catch(error=>console.log(error))
+    
+}).then((clientData) => {
+    console.log("data received", clientData)
+    clientData.momsName = "Vasilisa";
+    return clientData
+}).then((someData) => {
+    console.log("modified", someData)
+})
