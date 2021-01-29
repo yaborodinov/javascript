@@ -64,5 +64,15 @@ const sleep = (ms) => {
 
 }
 
-sleep(2000).then(() => console.log("after 2 sec"))
-sleep(4000).then(()=>console.log("after 4 sec"))
+// sleep(2000).then(() => console.log("after 2 sec"))
+// sleep(4000).then(()=>console.log("after 4 sec"))
+
+// метод all()
+Promise.all([sleep(2000), sleep(5000)])
+    .then(() => {
+    console.log("All prises")
+    })
+
+    // метод rece()
+Promise.race([sleep(2000), sleep(5000)]).then(() => console.log("Race promises"))
+    
