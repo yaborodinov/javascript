@@ -1,42 +1,77 @@
 "use strict"
+// function Clock({ template }) {
+
+//     let timer;
+
+//     function render() {
+//         let date = new Date();
+
+//         let hours = date.getHours();
+//         if (hours < 10) hours = '0' + hours;
+
+//         let mins = date.getMinutes();
+//         if (mins < 10) mins = '0' + mins;
+
+//         let secs = date.getSeconds();
+//         if (secs < 10) secs = '0' + secs;
+
+//         let output = template
+//             .replace('h', hours)
+//             .replace('m', mins)
+//             .replace('s', secs);
+
+//         console.log(output);
+//     }
+
+//     this.stop = function () {
+//         clearInterval(timer);
+//     };
+
+//     this.start = function () {
+//         render();
+//         timer = setInterval(render, 1000);
+//     };
+
+// }
+
+// let clock = new Clock({ template: 'h:m:s' });
+// clock.start();
 
 
+class Clock{
 
-
-const person = Object.create({
-    calculateAge() {
-        console.log("Age ", new Date().getFullYear() - this.birthYear )
+    constructor({template}) {
+        this.template = template;
     }
-}, {
-    name: {
-        value: "Ivan",
-        enumerable: true,
-        configurable: true,
-    },
-    birthYear:{
-        value: 1990,
-        enumerable: true,
-        writable:true,
-    },
-    age: {
-        get() {
-            return new Date().getFullYear() - this.birthYear
-        },
-        set(value) {
-            document.body.style.background = "green"
-            console.log("set age", value)
+
+    render() {
+        let date = new Date();
+
+        let hours = date.getHours();
+        if (hours < 10) hours = "0" + hours;
+
+        let min = date.getMinutes();
+        if (min < 10) min = "0" + min;
+
+        let secs = date.getSeconds();
+        if (secs < 10) secs = "0" + secs;
+
+        let output = this.template
+            .replace("h", hours)
+            .replace("m", min)
+            .replace("s", secs)
+        console.log(output)
+    }
+        stop(){
+            clearInterval(this.timer)
         }
-    }
-})
 
-
-
-
-for (let key in person) {
-    if (
-        person.hasOwnProperty(key)
-    ) {
-        console.log("KEY ", key)
-    }
+        start(){
+            this.render();
+            this.timer = setInterval(()=>this.render(),1000)
+        }
     
 }
+
+let clock = new Clock({ template: "h:m:s" })
+clock.start()
