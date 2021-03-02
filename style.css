@@ -4,3 +4,17 @@ body {
 }
 
 
+
+.orange{
+  color: #fff;
+  padding: 5px;
+  background-color: orange;
+}
+
+.red{
+  color: #fff;
+  padding: 5px;
+  background-color: rgb(253, 143, 143);
+}
+
+
