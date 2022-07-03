@@ -80,9 +80,6 @@ body{
 
 /* submenu */
 
-
-
-
 .sub_menu{
     position: absolute;
     left: -1px;
@@ -633,6 +630,10 @@ footer{
     color: #2c71b8 ;
     font-weight: 300;
     font-size: 21px;
+}
+
+.footer>p.myName {
+    color: black;
 }
 
 

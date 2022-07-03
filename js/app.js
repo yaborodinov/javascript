@@ -1,8 +1,5 @@
 "use strict"
 
-
-
-
 let input = document.querySelector("#products-count");
 
 let buttons = document.querySelectorAll(".add_to_cart");
